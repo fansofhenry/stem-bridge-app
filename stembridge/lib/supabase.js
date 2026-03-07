@@ -13,13 +13,17 @@ import { createClient } from "@supabase/supabase-js";
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-// Give a helpful error if the .env.local file isn't set up yet
+// Warn but don't crash — allows the app to start without Supabase for local UI dev.
+// Database calls will fail gracefully instead of crashing at import time.
 if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error(
+  console.warn(
     "Missing Supabase environment variables.\n" +
       "Copy .env.local.example → .env.local and fill in your values.\n" +
-      "See README.md → Setup for instructions."
+      "See README.md → Setup for instructions.\n" +
+      "The app will run but database features will not work."
   );
 }
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+export const supabase = supabaseUrl && supabaseAnonKey
+  ? createClient(supabaseUrl, supabaseAnonKey)
+  : null;

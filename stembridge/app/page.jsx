@@ -17,6 +17,7 @@ import Sustain        from "@/components/Sustain";
 import Resources      from "@/components/Resources";
 import CtaBanner      from "@/components/CtaBanner";
 import Footer         from "@/components/Footer";
+import ScrollReveal   from "@/components/ScrollReveal";
 
 // Next.js will re-fetch and re-render this page every 60 seconds
 // (Incremental Static Regeneration). Remove this for fully static.
@@ -35,7 +36,7 @@ export default async function HomePage() {
   return (
     <>
       <Nav />
-      <main>
+      <main id="main-content">
         <Hero />
         <ThreePaths />
         {/* ProjectSection is a Client Component so it can handle filtering/search */}
@@ -48,6 +49,7 @@ export default async function HomePage() {
         <CtaBanner />
       </main>
       <Footer />
+      <ScrollReveal />
     </>
   );
 }
