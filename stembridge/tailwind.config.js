@@ -11,21 +11,21 @@ module.exports = {
       // Our brand colours as Tailwind tokens
       colors: {
         green: {
-          DEFAULT: "#1a4a2e",
-          mid: "#2d6e47",
-          light: "#4a9e6b",
-          pale: "#edf6f1",
+          DEFAULT: "#003b5c",
+          mid: "#1a5276",
+          light: "#2e86c1",
+          pale: "#eaf2f8",
         },
         gold: {
-          DEFAULT: "#c9962b",
-          light: "#f0c060",
+          DEFAULT: "#c4972a",
+          light: "#e8b84b",
           pale: "#fdf5e3",
         },
-        cream: "#faf7f0",
-        sand: "#ede5d0",
-        "warm-white": "#fffdf8",
+        cream: "#f8f9fa",
+        sand: "#e2e4e8",
+        "warm-white": "#fbfcfd",
         charcoal: "#1c1c1c",
-        muted: "#6b6b5e",
+        muted: "#5a6570",
         brand_red: "#c0392b",
       },
       fontFamily: {

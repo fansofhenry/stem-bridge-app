@@ -15,7 +15,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background: #faf7f0;  /* cream */
+  background: #f8f9fa;  /* cream */
   color: #2a2a2a;
   overflow-x: hidden;
 }
@@ -51,7 +51,7 @@ body::before {
 
 /* ── Focus ring ── */
 :focus-visible {
-  outline: 2.5px solid #c9962b;
+  outline: 2.5px solid #c4972a;
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -62,7 +62,7 @@ body::before {
   top: -100%;
   left: 16px;
   z-index: 9999;
-  background: #1a4a2e;
+  background: #003b5c;
   color: #fff;
   padding: 8px 16px;
   border-radius: 0 0 8px 8px;

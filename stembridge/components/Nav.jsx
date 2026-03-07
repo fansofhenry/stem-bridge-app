@@ -41,7 +41,7 @@ export default function Nav() {
       {/* ── Main nav bar ── */}
       <nav
         className={`fixed top-0 left-0 right-0 z-50 h-[68px] flex items-center justify-between
-          px-[5vw] gap-4 bg-[#faf7f0]/95 backdrop-blur-md border-b border-green-DEFAULT/10
+          px-[5vw] gap-4 bg-[#f8f9fa]/95 backdrop-blur-md border-b border-green-DEFAULT/10
           transition-shadow duration-300 ${scrolled ? "shadow-md" : ""}`}
       >
         {/* Logo */}

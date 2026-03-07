@@ -7,7 +7,7 @@ export default function Hero() {
       {/* Decorative background blobs */}
       <div className="absolute w-[600px] h-[600px] rounded-full pointer-events-none
         right-[-100px] top-[-100px] animate-[float1_8s_ease-in-out_infinite]"
-        style={{background:"radial-gradient(circle, rgba(74,158,107,.12) 0%, transparent 70%)"}} />
+        style={{background:"radial-gradient(circle, rgba(46,134,193,.12) 0%, transparent 70%)"}} />
       <div className="absolute w-[400px] h-[400px] rounded-full pointer-events-none
         left-[-80px] bottom-[80px] animate-[float2_10s_ease-in-out_infinite]"
         style={{background:"radial-gradient(circle, rgba(201,150,43,.08) 0%, transparent 70%)"}} />
@@ -50,6 +50,18 @@ export default function Hero() {
             }}>
             ⬆ Upload Yours
           </button>
+        </div>
+
+        {/* Funding attribution */}
+        <div className="flex items-center gap-3 mb-8 bg-gold-pale border border-gold-DEFAULT/20 rounded-xl px-4 py-3 max-w-fit">
+          <span className="text-[0.72rem] text-muted leading-snug">
+            Funded by{" "}
+            <a href="https://foothill.edu/sli/" target="_blank" rel="noopener noreferrer"
+              className="font-bold text-green-DEFAULT no-underline hover:underline">SLI</a>
+            {" & "}
+            <span className="font-bold text-green-DEFAULT">MESA</span>
+            {" "}at Foothill College
+          </span>
         </div>
 
         {/* Stats */}

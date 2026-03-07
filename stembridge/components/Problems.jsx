@@ -7,7 +7,7 @@ export default function Problems() {
   ];
   return (
     <section id="about" className="py-20 px-[5vw] relative overflow-hidden"
-      style={{background:"linear-gradient(135deg,#1a4a2e 0%,#0d3220 100%)"}}>
+      style={{background:"linear-gradient(135deg,#003b5c 0%,#002640 100%)"}}>
       <div className="absolute w-[600px] h-[600px] rounded-full top-[-200px] right-[-100px] pointer-events-none"
         style={{background:"radial-gradient(circle,rgba(201,150,43,.08) 0%,transparent 60%)"}} />
       <div className="reveal">
