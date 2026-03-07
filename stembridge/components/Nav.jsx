@@ -29,6 +29,13 @@ export default function Nav() {
     setMenuOpen(false);
   };
 
+  // Listen for custom upload events dispatched by Hero, ThreePaths, CtaBanner
+  useEffect(() => {
+    const onOpenUpload = (e) => openUpload(e.detail || "upload");
+    window.addEventListener("stembridge:openUpload", onOpenUpload);
+    return () => window.removeEventListener("stembridge:openUpload", onOpenUpload);
+  }, []);
+
   return (
     <>
       {/* ── Main nav bar ── */}
@@ -187,9 +194,10 @@ function UploadModal({ mode, onClose, onSwitchMode }) {
 
   return (
     <div className="fixed inset-0 bg-black/55 backdrop-blur-sm z-[400] flex items-center justify-center p-6"
+      role="dialog" aria-modal="true" aria-label={mode === "wanted" ? "Post a Wanted Ad" : "Upload Your Project"}
       onClick={(e) => e.target === e.currentTarget && onClose()}>
       <div className="bg-white rounded-2xl p-9 max-w-[640px] w-full max-h-[92vh] overflow-y-auto relative">
-        <button onClick={onClose}
+        <button onClick={onClose} aria-label="Close dialog"
           className="absolute top-4 right-4 bg-sand border-none rounded-lg w-8 h-8 cursor-pointer
             text-muted flex items-center justify-center hover:bg-charcoal hover:text-white transition-all">
           ✕

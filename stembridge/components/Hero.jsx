@@ -1,4 +1,5 @@
-// components/Hero.jsx — SERVER component (no interactivity needed)
+// components/Hero.jsx — CLIENT component (dispatches custom events)
+"use client";
 export default function Hero() {
   return (
     <section className="min-h-screen pt-[calc(68px+72px)] pb-20 px-[5vw] grid md:grid-cols-[1.05fr_0.95fr] gap-16 items-center

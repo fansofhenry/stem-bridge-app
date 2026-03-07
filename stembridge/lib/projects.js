@@ -12,6 +12,7 @@ import { supabase } from "./supabase";
  * Fetch all projects, newest first, including their updates.
  */
 export async function getAllProjects() {
+  if (!supabase) return [];
   const { data, error } = await supabase
     .from("projects")
     .select(`
@@ -30,6 +31,7 @@ export async function getAllProjects() {
  * Fetch a single project by ID, including updates.
  */
 export async function getProjectById(id) {
+  if (!supabase) throw new Error("Supabase is not configured");
   const { data, error } = await supabase
     .from("projects")
     .select(`*, project_updates (*)`)
@@ -47,6 +49,7 @@ export async function getProjectById(id) {
  * @param {object} project - Fields matching the projects table
  */
 export async function createProject(project) {
+  if (!supabase) throw new Error("Supabase is not configured");
   const { data, error } = await supabase
     .from("projects")
     .insert([project])
@@ -61,6 +64,7 @@ export async function createProject(project) {
  * Add an update post to an existing project.
  */
 export async function addProjectUpdate({ projectId, author, body, attachment }) {
+  if (!supabase) throw new Error("Supabase is not configured");
   const { data, error } = await supabase
     .from("project_updates")
     .insert([{ project_id: projectId, author, body, attachment }])

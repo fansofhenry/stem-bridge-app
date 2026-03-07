@@ -1,4 +1,5 @@
-// components/ThreePaths.jsx
+// components/ThreePaths.jsx — CLIENT component (dispatches custom events)
+"use client";
 export default function ThreePaths() {
   const paths = [
     {

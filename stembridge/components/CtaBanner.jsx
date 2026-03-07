@@ -1,3 +1,5 @@
+// components/CtaBanner.jsx — CLIENT component (dispatches custom events)
+"use client";
 export default function CtaBanner() {
   return (
     <section id="start-project" className="py-28 px-[5vw] text-center relative overflow-hidden"
