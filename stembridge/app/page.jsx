@@ -8,6 +8,7 @@
 import { getAllProjects } from "@/lib/projects";
 import Nav            from "@/components/Nav";
 import Hero           from "@/components/Hero";
+import RealityCheck   from "@/components/RealityCheck";
 import ThreePaths     from "@/components/ThreePaths";
 import ProjectSection from "@/components/ProjectSection";
 import CrossPoll      from "@/components/CrossPoll";
@@ -38,6 +39,7 @@ export default async function HomePage() {
       <Nav />
       <main id="main-content">
         <Hero />
+        <RealityCheck />
         <ThreePaths />
         {/* ProjectSection is a Client Component so it can handle filtering/search */}
         <ProjectSection initialProjects={projects} />

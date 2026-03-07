@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>StemBridge Flyer</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&display=swap');
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .flyer {
+    width: 8.5in;
+    min-height: 11in;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,.12);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #003b5c 0%, #002640 100%);
+    color: white;
+    padding: 48px 48px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,150,43,.15), transparent 70%);
+    top: -100px; right: -60px;
+  }
+  .brand {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: 42px;
+    line-height: 1;
+    margin-bottom: 4px;
+    position: relative; z-index: 1;
+  }
+  .brand span { color: #e8b84b; }
+  .tagline {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: #e8b84b;
+    font-size: 16px;
+    margin-bottom: 20px;
+    position: relative; z-index: 1;
+  }
+  .hook {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.3;
+    max-width: 520px;
+    position: relative; z-index: 1;
+  }
+  .hook em { color: #e8b84b; font-style: italic; }
+
+  /* ── Stats strip ── */
+  .stats {
+    display: flex;
+    background: #c4972a;
+    color: white;
+  }
+  .stat {
+    flex: 1;
+    text-align: center;
+    padding: 16px 12px;
+    border-right: 1px solid rgba(255,255,255,.2);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: 28px;
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 11px;
+    opacity: .85;
+    margin-top: 4px;
+    line-height: 1.3;
+  }
+
+  /* ── Body ── */
+  .body { padding: 36px 48px; flex: 1; }
+
+  .reality {
+    background: #fdf5e3;
+    border-left: 4px solid #c4972a;
+    border-radius: 0 12px 12px 0;
+    padding: 20px 24px;
+    margin-bottom: 28px;
+  }
+  .reality p {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.7;
+    margin-bottom: 8px;
+  }
+  .reality p:last-child { margin-bottom: 0; }
+  .reality strong { color: #003b5c; }
+
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: #003b5c;
+    margin-bottom: 16px;
+  }
+
+  .benefits {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .benefit {
+    background: #eaf2f8;
+    border-radius: 12px;
+    padding: 20px 16px;
+    text-align: center;
+  }
+  .benefit-icon { font-size: 28px; margin-bottom: 8px; }
+  .benefit-title {
+    font-weight: 700;
+    font-size: 13px;
+    color: #003b5c;
+    margin-bottom: 4px;
+  }
+  .benefit-desc {
+    font-size: 12px;
+    color: #5a6570;
+    line-height: 1.5;
+  }
+
+  .paths {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .path {
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+  .path-find { background: #003b5c; color: white; }
+  .path-upload { background: white; border: 2px solid #003b5c; color: #003b5c; }
+  .path-wanted { background: #c0392b; color: white; }
+  .path-icon { font-size: 24px; margin-bottom: 6px; }
+  .path-title { font-weight: 700; font-size: 13px; margin-bottom: 4px; }
+  .path-desc { font-size: 11px; opacity: .8; line-height: 1.4; }
+
+  /* ── Footer / CTA ── */
+  .cta-bar {
+    background: linear-gradient(135deg, #003b5c, #1a5276);
+    color: white;
+    padding: 28px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+  }
+  .cta-text {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.3;
+  }
+  .cta-text span { color: #e8b84b; }
+  .cta-url {
+    background: #e8b84b;
+    color: #003b5c;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 12px 28px;
+    border-radius: 12px;
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .funded {
+    text-align: center;
+    padding: 12px;
+    font-size: 11px;
+    color: #5a6570;
+    background: #f8f9fa;
+  }
+
+  @media print {
+    body { padding: 0; background: white; }
+    .flyer { box-shadow: none; border-radius: 0; width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="flyer">
+  <!-- Header -->
+  <div class="header">
+    <div class="brand">Stem<span>Bridge</span></div>
+    <div class="tagline">connect &middot; build &middot; launch</div>
+    <div class="hook">
+      Ever seen a job posting and thought, <em>&ldquo;I don&rsquo;t even qualify&rdquo;</em>?
+      <br/>You&rsquo;re not alone. Let&rsquo;s fix that.
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-num">50%+</div>
+      <div class="stat-label">of students who start college never finish</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">43%</div>
+      <div class="stat-label">of grads are underemployed after earning their degree</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">65%</div>
+      <div class="stat-label">of jobs need experience most students don&rsquo;t have</div>
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div class="body">
+    <div class="reality">
+      <p>You&rsquo;ve heard it before: <strong>&ldquo;Get a degree and you&rsquo;ll be set.&rdquo;</strong> But the truth? A diploma alone isn&rsquo;t enough. Employers want <strong>proof you can build things, work on teams, and solve real problems.</strong></p>
+      <p>Project-based experience opens doors that classrooms can&rsquo;t &mdash; <strong>networks, skills, and a portfolio</strong> that make you the obvious hire. Don&rsquo;t become a statistic. Start building now.</p>
+    </div>
+
+    <div class="section-title">What you actually gain</div>
+    <div class="benefits">
+      <div class="benefit">
+        <div class="benefit-icon">🤝</div>
+        <div class="benefit-title">Real Connections</div>
+        <div class="benefit-desc">Networks and mentors who open doors you didn&rsquo;t know existed</div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">🛠️</div>
+        <div class="benefit-title">Portfolio-Ready Skills</div>
+        <div class="benefit-desc">Work you can show employers &mdash; not just a GPA on paper</div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">🚀</div>
+        <div class="benefit-title">Launch Confidence</div>
+        <div class="benefit-desc">Walk into any interview and say &ldquo;I built this&rdquo;</div>
+      </div>
+    </div>
+
+    <div class="section-title">Three ways to get started</div>
+    <div class="paths">
+      <div class="path path-find">
+        <div class="path-icon">🔍</div>
+        <div class="path-title">Find a Project</div>
+        <div class="path-desc">Search by skill, interest, or time commitment and join a team</div>
+      </div>
+      <div class="path path-upload">
+        <div class="path-icon">⬆️</div>
+        <div class="path-title">Upload Yours</div>
+        <div class="path-desc">Post your project brief and let collaborators discover you</div>
+      </div>
+      <div class="path path-wanted">
+        <div class="path-icon">📣</div>
+        <div class="path-title">Post a Wanted Ad</div>
+        <div class="path-desc">Need a specific skill? Post an ad and the right person finds you</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-bar">
+    <div class="cta-text">Your future self will thank you.<br/><span>Start building today.</span></div>
+    <a href="https://stem-bridge-app.vercel.app" class="cta-url">stem-bridge-app.vercel.app</a>
+  </div>
+  <div class="funded">Funded by SLI & MESA at Foothill College &nbsp;|&nbsp; Where Foothill STEM Students Build Together</div>
+</div>
+
+</body>
+</html>
