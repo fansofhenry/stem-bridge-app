@@ -76,26 +76,37 @@ export default function MatchQuiz({ projects }) {
         ) : (
           <div className="animate-[fadeUp_.4s_ease-out]">
             <h3 className="text-base font-bold text-green-DEFAULT mb-3">🎯 Your Top Matches</h3>
-            <div className="flex flex-col gap-3">
-              {results().map(p => {
-                const a = AREA_META[p.area] || AREA_META.other;
-                const s = STATUS_META[p.status] || STATUS_META.idea;
-                return (
-                  <div key={p.id} className="bg-cream rounded-2xl p-4 border-l-4 border-green-light hover:bg-sand transition-colors cursor-pointer">
-                    <div className="flex items-center gap-3 mb-1">
-                      <span className="text-xl">{p.icon}</span>
-                      <span className="font-semibold text-sm text-charcoal">{p.title}</span>
+            {results().length > 0 ? (
+              <div className="flex flex-col gap-3">
+                {results().map(p => {
+                  const a = AREA_META[p.area] || AREA_META.other;
+                  const s = STATUS_META[p.status] || STATUS_META.idea;
+                  return (
+                    <div key={p.id} className="bg-cream rounded-2xl p-4 border-l-4 border-green-light hover:bg-sand transition-colors cursor-pointer">
+                      <div className="flex items-center gap-3 mb-1">
+                        <span className="text-xl">{p.icon}</span>
+                        <span className="font-semibold text-sm text-charcoal">{p.title}</span>
+                      </div>
+                      <div className="flex gap-1.5 flex-wrap mt-1">
+                        <span className={`status-tag ${s.pillClass}`}>{s.label}</span>
+                        <span className={`text-[0.65rem] font-bold px-2 py-0.5 rounded uppercase tracking-wide ${a.classes}`}>{a.label}</span>
+                        <span className="font-mono text-[0.65rem] bg-sand text-muted px-1.5 py-0.5 rounded">{p.time_commitment}</span>
+                      </div>
+                      <p className="font-mono text-[0.68rem] text-green-DEFAULT font-semibold mt-1.5">✓ Matched on your interests + availability</p>
                     </div>
-                    <div className="flex gap-1.5 flex-wrap mt-1">
-                      <span className={`status-tag ${s.pillClass}`}>{s.label}</span>
-                      <span className={`text-[0.65rem] font-bold px-2 py-0.5 rounded uppercase tracking-wide ${a.classes}`}>{a.label}</span>
-                      <span className="font-mono text-[0.65rem] bg-sand text-muted px-1.5 py-0.5 rounded">{p.time_commitment}</span>
-                    </div>
-                    <p className="font-mono text-[0.68rem] text-green-DEFAULT font-semibold mt-1.5">✓ Matched on your interests + availability</p>
-                  </div>
-                );
-              })}
-            </div>
+                  );
+                })}
+              </div>
+            ) : (
+              <div className="bg-cream rounded-2xl p-6 text-center">
+                <p className="text-muted text-sm mb-2">No exact matches yet — but that means there&apos;s room for your project!</p>
+                <button
+                  onClick={() => window.dispatchEvent(new CustomEvent("stembridge:openUpload", { detail: "upload" }))}
+                  className="bg-green-DEFAULT text-white px-5 py-2 rounded-xl text-sm font-bold border-none cursor-pointer hover:bg-green-mid transition-all font-sans mt-2">
+                  ⬆ Upload Your Project
+                </button>
+              </div>
+            )}
             <button onClick={reset} className="mt-4 border border-green-DEFAULT/20 text-muted bg-none rounded-xl px-4 py-2 text-sm font-semibold cursor-pointer font-sans hover:border-green-DEFAULT hover:text-green-DEFAULT transition-all">↺ Start over</button>
           </div>
         )}

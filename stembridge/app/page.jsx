@@ -5,7 +5,7 @@
 // then passes them down to interactive Client Components.
 // ─────────────────────────────────────────────────────────────
 
-import { getAllProjects } from "@/lib/projects";
+import { getAllProjects, SEED_PROJECTS } from "@/lib/projects";
 import Nav            from "@/components/Nav";
 import Hero           from "@/components/Hero";
 import RealityCheck   from "@/components/RealityCheck";
@@ -19,6 +19,7 @@ import Resources      from "@/components/Resources";
 import CtaBanner      from "@/components/CtaBanner";
 import Footer         from "@/components/Footer";
 import ScrollReveal   from "@/components/ScrollReveal";
+import MobileBottomNav from "@/components/MobileBottomNav";
 
 // Next.js will re-fetch and re-render this page every 60 seconds
 // (Incremental Static Regeneration). Remove this for fully static.
@@ -27,22 +28,28 @@ export const revalidate = 60;
 export default async function HomePage() {
   // Fetch projects from Supabase. This runs on the server — no loading spinner needed.
   let projects = [];
+  let usingSeedData = false;
   try {
     projects = await getAllProjects();
   } catch (err) {
     console.error("Could not fetch projects:", err.message);
-    // Page still renders — just with an empty list and an error note.
+  }
+
+  // Fallback to seed data if Supabase isn't configured or returned empty
+  if (!projects || projects.length === 0) {
+    projects = SEED_PROJECTS;
+    usingSeedData = true;
   }
 
   return (
     <>
       <Nav />
       <main id="main-content">
-        <Hero />
+        <Hero projectCount={projects.length} />
         <RealityCheck />
         <ThreePaths />
         {/* ProjectSection is a Client Component so it can handle filtering/search */}
-        <ProjectSection initialProjects={projects} />
+        <ProjectSection initialProjects={projects} usingSeedData={usingSeedData} />
         <CrossPoll />
         <Problems />
         <MatchQuiz projects={projects} />
@@ -51,7 +58,9 @@ export default async function HomePage() {
         <CtaBanner />
       </main>
       <Footer />
+      <MobileBottomNav />
       <ScrollReveal />
     </>
+  );
   );
 }

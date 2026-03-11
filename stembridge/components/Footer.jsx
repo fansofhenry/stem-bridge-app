@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="bg-charcoal text-white/52 px-[5vw] pt-14 pb-6">
+    <footer className="bg-charcoal text-white/52 px-[5vw] pt-14 pb-20 md:pb-6">
       {/* SLI & MESA Funding Banner */}
       <div className="bg-white/6 border border-white/10 rounded-2xl px-6 py-5 mb-10 flex flex-col sm:flex-row items-start sm:items-center gap-4">
         <div className="flex-1">
@@ -36,8 +36,8 @@ export default function Footer() {
         </div>
         {[
           { heading:"Platform", links:[["#search-anchor","Browse Projects"],["#match","Find My Match"],["#","Upload Project"],["#","Post Wanted Ad"]] },
-          { heading:"Communities", links:[["https://foothill.edu/sli/","SLI"],["#","MESA"],["#","Umoja"],["#","Puente"],["#","ETI"]] },
-          { heading:"Connect", links:[["#","About StemBridge"],["https://github.com/fansofhenry/Foothill_Student_Projects","GitHub"],["#","Contact Henry"],["#","Contact Cris"]] },
+          { heading:"Communities", links:[["https://foothill.edu/sli/","SLI"],["https://foothill.edu/mesa/","MESA"],["https://foothill.edu/umoja/","Umoja"],["https://foothill.edu/puente/","Puente"],["https://foothill.edu/eti/","ETI"]] },
+          { heading:"Connect", links:[["#about","About StemBridge"],["https://github.com/fansofhenry/stem-bridge-app","GitHub"],["#","Contact Henry"],["#","Contact Cris"]] },
         ].map(col => (
           <div key={col.heading}>
             <h4 className="text-white/85 font-bold text-[0.72rem] uppercase tracking-widest mb-3">{col.heading}</h4>
@@ -51,7 +51,7 @@ export default function Footer() {
       </div>
       <div className="border-t border-white/7 pt-4 flex justify-between items-center flex-wrap gap-3 text-[0.72rem]">
         <span>&copy; 2026 StemBridge &middot; Foothill College. Funded by SLI &amp; MESA. Built by students, for students.</span>
-        <span className="text-white/22">Foothill Owls &amp; SJSU Spartans fly together</span>
+        <span className="text-white/22" title="StemBridge is built by students from Foothill College and San José State University">Built by Foothill Owls &amp; SJSU Spartans 🦉🐦</span>
       </div>
     </footer>
   );

@@ -2,23 +2,23 @@
 import { useState } from "react";
 const TABS = [
   { key:"programs", label:"Campus Programs", items:[
-    { icon:"🔬", title:"Science Learning Institute (SLI)", desc:'Spring internship program — competitive, limited spots. StemBridge is the "Plan B" for students who don\'t get in.' },
-    { icon:"🚀", title:"ETI", desc:"2–3 year hands-on learning. Karl's vision: simple frameworks to help students go from idea to action." },
-    { icon:"💡", title:"KCI Innovation Challenge", desc:"Campus innovation competition — great for teams that want a structured goal and recognition." },
-    { icon:"🤝", title:"Enactus", desc:"Student org using entrepreneurial action to make social impact." },
-    { icon:"🌱", title:"MESA", desc:"Math, Engineering, Science Achievement — supports first-gen, low-income STEM students." },
-    { icon:"🌍", title:"Puente & Umoja", desc:"Learning communities supporting Latinx and African American students." },
+    { icon:"🔬", title:"Science Learning Institute (SLI)", desc:'Spring internship program — competitive, limited spots. StemBridge is the "Plan B" for students who don\'t get in.', url:"https://foothill.edu/sli/" },
+    { icon:"🚀", title:"ETI", desc:"2–3 year hands-on learning. Karl's vision: simple frameworks to help students go from idea to action.", url:"https://foothill.edu/eti/" },
+    { icon:"💡", title:"KCI Innovation Challenge", desc:"Campus innovation competition — great for teams that want a structured goal and recognition.", url:"https://foothill.edu/kci/" },
+    { icon:"🤝", title:"Enactus", desc:"Student org using entrepreneurial action to make social impact.", url:"https://www.enactus.org/" },
+    { icon:"🌱", title:"MESA", desc:"Math, Engineering, Science Achievement — supports first-gen, low-income STEM students.", url:"https://foothill.edu/mesa/" },
+    { icon:"🌍", title:"Puente & Umoja", desc:"Learning communities supporting Latinx and African American students.", url:"https://foothill.edu/puente/" },
   ]},
   { key:"frameworks", label:"Project Frameworks", items:[
-    { icon:"🗺️", title:"Project Brief Template", desc:"A 1-page template: problem, skills needed, time commitment, and the first 3 tasks for a new collaborator." },
-    { icon:"🧩", title:"Design Thinking Starter Kit", desc:"Empathize → Define → Ideate → Prototype → Test, simplified into a 5-step worksheet." },
-    { icon:"🤖", title:"Intro to ML (Cris's Notes)", desc:"Student-written guide to ML concepts powering StemBridge's matching system." },
-    { icon:"🐍", title:"Python for Non-CS Students", desc:"Short videos and a starter notebook for any major." },
+    { icon:"🗺️", title:"Project Brief Template", desc:"A 1-page template: problem, skills needed, time commitment, and the first 3 tasks for a new collaborator.", url:null },
+    { icon:"🧩", title:"Design Thinking Starter Kit", desc:"Empathize → Define → Ideate → Prototype → Test, simplified into a 5-step worksheet.", url:null },
+    { icon:"🤖", title:"Intro to ML (Cris's Notes)", desc:"Student-written guide to ML concepts powering StemBridge's matching system.", url:null },
+    { icon:"🐍", title:"Python for Non-CS Students", desc:"Short videos and a starter notebook for any major.", url:null },
   ]},
   { key:"equity", label:"Equity Pathways", items:[
-    { icon:"📋", title:"Dream Act Students & Projects", desc:"If federal work study limits off-campus internships, campus projects are a verified alternative." },
-    { icon:"🌐", title:"International Student Pathways", desc:"Projects that don't require work authorization but build portfolio evidence." },
-    { icon:"💼", title:"What Employers Actually Want", desc:"Sophia's industry partner conversations — the specific skills missing from most student resumes." },
+    { icon:"📋", title:"Dream Act Students & Projects", desc:"If federal work study limits off-campus internships, campus projects are a verified alternative.", url:"https://foothill.edu/financialaid/dream-act.html" },
+    { icon:"🌐", title:"International Student Pathways", desc:"Projects that don't require work authorization but build portfolio evidence.", url:"https://foothill.edu/international/" },
+    { icon:"💼", title:"What Employers Actually Want", desc:"Sophia's industry partner conversations — the specific skills missing from most student resumes.", url:null },
   ]},
 ];
 export default function Resources() {
@@ -47,7 +47,16 @@ export default function Resources() {
             <span className="text-[1.35rem] mb-2 block">{it.icon}</span>
             <h4 className="font-bold text-sm text-charcoal mb-1">{it.title}</h4>
             <p className="text-[0.78rem] text-muted leading-relaxed">{it.desc}</p>
-            <a href="#" className="inline-block mt-2 text-xs font-bold text-green-DEFAULT no-underline hover:underline">Learn more →</a>
+            {it.url ? (
+              <a href={it.url} target="_blank" rel="noopener noreferrer"
+                className="inline-block mt-2 text-xs font-bold text-green-DEFAULT no-underline hover:underline">
+                Learn more →
+              </a>
+            ) : (
+              <span className="inline-block mt-2 text-xs font-medium text-muted/60 italic">
+                Coming soon
+              </span>
+            )}
           </div>
         ))}
       </div>

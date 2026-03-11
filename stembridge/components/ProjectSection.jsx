@@ -15,7 +15,7 @@ const STATUS_FILTERS = [
   { key:"done",     label:"✅ Completed" },
 ];
 
-export default function ProjectSection({ initialProjects }) {
+export default function ProjectSection({ initialProjects, usingSeedData = false }) {
   const [query,       setQuery]       = useState("");
   const [areaFilter,  setAreaFilter]  = useState("all");
   const [timeFilter,  setTimeFilter]  = useState("all");
@@ -103,11 +103,29 @@ export default function ProjectSection({ initialProjects }) {
 
       {/* ── Project grid ── */}
       <div className="px-[5vw] py-9 pb-20">
+        {/* Seed data notice */}
+        {usingSeedData && initialProjects.length > 0 && (
+          <div className="mb-6 bg-gold-pale border border-gold-DEFAULT/20 rounded-xl px-5 py-3 flex items-start gap-3">
+            <span className="text-lg flex-shrink-0 mt-0.5">🌱</span>
+            <div>
+              <p className="text-sm font-semibold text-charcoal">You&apos;re viewing sample projects</p>
+              <p className="text-xs text-muted mt-0.5">
+                These are examples to show how StemBridge works. Upload your own project to go live!
+              </p>
+            </div>
+          </div>
+        )}
+
         {filtered.length === 0 ? (
           <div className="text-center py-14 text-muted">
             <div className="text-4xl mb-3">🔍</div>
-            <p className="font-bold text-charcoal mb-1">No projects found</p>
-            <p className="text-sm">Try different filters, or upload your project.</p>
+            <p className="font-bold text-charcoal mb-1">No projects match your filters</p>
+            <p className="text-sm mb-4">Try broadening your search, or be the first to post in this category.</p>
+            <button
+              onClick={() => window.dispatchEvent(new CustomEvent("stembridge:openUpload", { detail: "upload" }))}
+              className="bg-green-DEFAULT text-white px-5 py-2 rounded-xl text-sm font-bold border-none cursor-pointer hover:bg-green-mid transition-all font-sans">
+              ⬆ Upload Your Project
+            </button>
           </div>
         ) : (
           <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-5">

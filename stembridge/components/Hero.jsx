@@ -1,6 +1,6 @@
 // components/Hero.jsx — CLIENT component (dispatches custom events)
 "use client";
-export default function Hero() {
+export default function Hero({ projectCount = 0 }) {
   return (
     <section className="min-h-screen pt-[calc(68px+72px)] pb-20 px-[5vw] grid md:grid-cols-[1.05fr_0.95fr] gap-16 items-center
       relative overflow-hidden bg-cream">
@@ -66,7 +66,7 @@ export default function Hero() {
 
         {/* Stats */}
         <div className="flex gap-10 pt-8 border-t border-green-DEFAULT/12">
-          {[["150+","Active Projects"],["500+","Students Connected"],["3","Learning Communities"]].map(([n, l]) => (
+          {[[`${projectCount}+`,"Active Projects"],["15K+","Students at Foothill"],["5","Disciplines Connected"]].map(([n, l]) => (
             <div key={l}>
               <div className="font-display font-black text-[2.1rem] text-green-DEFAULT leading-none tracking-tight">{n}</div>
               <div className="text-[0.72rem] text-muted font-medium mt-1">{l}</div>
